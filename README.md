@@ -90,12 +90,12 @@ Detects suspicious authentication patterns
 Assigns fraud risk scores
 
 🔄 Data Flow
-User connects wallet via MetaMask
-Frontend sends request to backend
-Backend verifies identity via smart contract
-ML service evaluates fraud risk
-Backend returns response
-Frontend displays result
+1.User connects wallet via MetaMask
+2.Frontend sends request to backend
+3.Backend verifies identity via smart contract
+4.ML service evaluates fraud risk
+5.Backend returns response
+6.Frontend displays result
 
 🧠 AI Fraud Detection
 Built using Scikit-learn
@@ -104,7 +104,6 @@ Extendable with:
 Behavioral analysis
 Geo-location anomaly detection
 Frequency-based attack detection
-
 
 🛠️ Tech Stack
 
