@@ -14,4 +14,7 @@ router.get("/get-did/:walletAddress", didController.getDID);
 // ML fraud check
 router.post("/check-fraud", didController.checkFraud);
 
+// Validation Pipeline (Enterprise SOC)
+router.post("/validate-pipeline", didController.validatePipeline);
+
 module.exports = router;

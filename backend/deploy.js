@@ -5,7 +5,7 @@ const path = require("path");
 
 async function main() {
     const provider = new ethers.JsonRpcProvider("http://127.0.0.1:7545");
-    const wallet = new ethers.Wallet("0x814483205df495d58f5dc19c7d4dd1f056635e84d9234b5c1c7bc711e18aa494", provider);
+    const wallet = await provider.getSigner(0); // Automatically uses the first unlocked Ganache account
 
     const contractPath = path.resolve(__dirname, "../blockchain/DIDRegistry.sol");
     const source = fs.readFileSync(contractPath, "utf8");
@@ -60,6 +60,19 @@ async function main() {
     envContent = envContent.replace(/CONTRACT_ADDRESS=0x[a-fA-F0-9]{40}/, `CONTRACT_ADDRESS=${address}`);
     fs.writeFileSync(envPath, envContent);
     console.log("Updated .env with new contract address");
+
+    // Update frontend Index.tsx
+    try {
+        const frontendPath = path.resolve(__dirname, "../frontend/src/pages/Index.tsx");
+        if (fs.existsSync(frontendPath)) {
+            let frontendContent = fs.readFileSync(frontendPath, "utf8");
+            frontendContent = frontendContent.replace(/const contractAddress = "0x[a-fA-F0-9]{40}";/, `const contractAddress = "${address}";`);
+            fs.writeFileSync(frontendPath, frontendContent);
+            console.log("Updated frontend Index.tsx with new contract address");
+        }
+    } catch (e) {
+        console.error("Could not update frontend Index.tsx:", e.message);
+    }
 }
 
 main().catch(console.error);

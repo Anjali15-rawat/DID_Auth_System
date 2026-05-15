@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node src/index.js",
+    "migrate": "node scripts/migrate.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,11 +13,17 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "ethers": "^6.16.0",
     "express": "^5.2.1",
+    "ioredis": "^5.10.1",
+    "jsonwebtoken": "^9.0.3",
     "node-fetch": "^3.3.2",
-    "solc": "^0.8.35"
+    "pg": "^8.20.0",
+    "socket.io": "^4.8.3",
+    "solc": "^0.8.35",
+    "uuid": "^14.0.0"
   }
 }
